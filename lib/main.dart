@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'package:num_clock/pages/clock_buut/clock_buut_binding.dart';
+import 'package:num_clock/pages/clock_buut/clock_buut_view.dart';
 import 'package:num_clock/pages/clock_main/clock_main_binding.dart';
 import 'package:num_clock/pages/clock_main/clock_main_view.dart';
 import 'package:num_clock/pages/clock_setting/clock_setting_binding.dart';
 import 'package:num_clock/pages/clock_setting/clock_setting_view.dart';
 import 'package:num_clock/pages/events/events.dart';
+import 'package:num_clock/pages/events/fix_event.dart';
 import 'package:num_clock/pages/no_network/no_network_binding.dart';
 import 'package:num_clock/pages/no_network/no_network_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: NsClocks,
-      initialRoute: '/main',
+      initialRoute: '/',
       theme: ThemeData(
         useMaterial3: true,
         primaryColor: primaryColor,
@@ -89,7 +92,9 @@ class MyApp extends StatelessWidget {
   }
 }
 List<GetPage<dynamic>> NsClocks = [
+  GetPage(name: '/', page: () => const ClockBuutView(), binding: ClockBuutBinding()),
   GetPage(name: '/error', page: () => NoNetworkPage(), binding: NoNetworkBinding()),
+  GetPage(name: '/fix', page: () => const FixEvent()),
   GetPage(name: '/main', page: () => const ClockMainPage(), binding: ClockMainBinding()),
   GetPage(name: '/setting', page: () => ClockSettingPage(), binding: ClockSettingBinding()),
 ];
