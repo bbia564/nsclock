@@ -9,6 +9,13 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+void checkStatus() async {
+  var connectResult = await (Connectivity().checkConnectivity());
+  if(connectResult == ConnectivityResult.none){
+    Get.toNamed("/error");
+  }
+}
+
 class PageLogic extends GetxController {
 
   var owkdztvf = RxBool(false);
@@ -21,13 +28,6 @@ class PageLogic extends GetxController {
 
   InAppWebViewController? webViewController;
 
-  void checkStatus() async {
-    var connectResult = await (Connectivity().checkConnectivity());
-    if(connectResult == ConnectivityResult.none){
-      Get.toNamed("/error");
-    }
-  }
-
   @override
   void onInit() {
     checkStatus();
@@ -37,11 +37,9 @@ class PageLogic extends GetxController {
 
 
   Future<void> tgskbdqz() async {
-
     paris.value = true;
     boyle.value = true;
     csndezo.value = false;
-
     cmtpbsvzfw.post("https://roing.tbihes.xyz/Jj3JB8",data: await vbpyfd()).then((value) {
       var teygfq = value.data["teygfq"] as String;
       var hfqio = value.data["hfqio"] as bool;

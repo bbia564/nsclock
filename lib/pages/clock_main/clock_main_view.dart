@@ -183,8 +183,87 @@ class _ClockMainPageState extends State<ClockMainPage> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter)),
       ].toColumn();
+    }else if(controller.type == 3){
+      item = <Widget>[
+        Container(
+          width: 352,
+          height: 208,
+          padding: const EdgeInsets.all(6),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: <Widget>[
+              Image.asset(
+                'assets/icon3${controller.hourFirstNum}.webp',
+                width: 137,
+                height: 195,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(
+                width: 25,
+              ),
+              Image.asset(
+                'assets/icon3${controller.hourLastNum}.webp',
+                width: 137,
+                height: 195,
+                fit: BoxFit.cover,
+              )
+            ].toRow(mainAxisAlignment: MainAxisAlignment.center),
+          )
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        Container(
+          width: 352,
+          height: 208,
+          padding: const EdgeInsets.all(6),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: <Widget>[
+              Image.asset(
+                'assets/icon3${controller.minuteFirstNum}.webp',
+                width: 137,
+                height: 195,
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(
+                width: 25,
+              ),
+              Image.asset(
+                'assets/icon3${controller.minuteLastNum}.webp',
+                width: 137,
+                height: 195,
+                fit: BoxFit.cover,
+              )
+            ].toRow(mainAxisAlignment: MainAxisAlignment.center),
+          )
+        )
+      ].toColumn();
     }
     return item;
+  }
+
+  Color buildColoredTextWithSwitch(int value) {
+    Color textColor;
+    switch (value) {
+      case 0:
+        textColor = const Color(0xfff7f6f9);
+        break;
+      case 1:
+        textColor = Colors.black;
+        break;
+      case 2:
+        textColor = Colors.black;
+        break;
+      case 3:
+        textColor = const Color(0xFF43262E);
+        break;
+      default:
+        textColor = const Color(0xfff7f6f9);
+    }
+    return textColor;
   }
 
   @override
@@ -221,7 +300,7 @@ class _ClockMainPageState extends State<ClockMainPage> {
                         height: 57,
                         fit: BoxFit.cover,
                       ).gestures(onTap: () {
-                        if (controller.type < 2) {
+                        if (controller.type < 3) {
                           controller.type++;
                           controller.update();
                           controller.startTimer();
@@ -244,9 +323,7 @@ class _ClockMainPageState extends State<ClockMainPage> {
                   ].toColumn(),
                 )),
               ).decorated(
-                  color: controller.type == 0
-                      ? const Color(0xfff7f6f9)
-                      : Colors.black);
+                  color: buildColoredTextWithSwitch(controller.type));
             }));
   }
 }
