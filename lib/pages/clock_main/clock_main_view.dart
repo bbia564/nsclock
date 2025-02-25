@@ -270,11 +270,13 @@ class _ClockMainPageState extends State<ClockMainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(title: const Text("Desktop clock")),
+        appBar: AppBar(title: Text("Desktop clock",style: TextStyle(
+          color: controller.type == 0 ? Colors.black : Colors.white
+        ),)),
         body: GetBuilder<ClockMainLogic>(
             init: ClockMainLogic(),
             builder: (logic) {
-              return Container(
+              return SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: SafeArea(
@@ -309,6 +311,9 @@ class _ClockMainPageState extends State<ClockMainPage> {
                           controller.update();
                           controller.startTimer();
                         }
+                        setState(() {
+
+                        });
                       }),
                       const SizedBox(width: 15),
                       Image.asset(

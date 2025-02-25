@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "point-logo.png",
+      "filename" : "im.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "point-logo 1.png",
+      "filename" : "im 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "point-logo 2.png",
+      "filename" : "im 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
